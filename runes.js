@@ -1,5 +1,21 @@
 import{make_cross, rcross, blank, beside, stack, show, square, stack_frac, beside_frac } from "rune";
+// copy your hook function from Question 2 here if required
+function hook(n) {
+    return stack_frac(1/2, square, beside_frac(1-n, blank, square));
+}
 
+function spiral(thickness,depth) {
+    return depth === 0
+    ? blank
+    :stack_frac(thickness, hook(thickness/2), 
+    quarter_turn_right(spiral(thickness, depth - 1)));
+}
+// Test
+show(spiral(1 / 10, 10));
+
+//notes: depth is number of times the function calls itself, 
+//number of times the structure stacks on itself, each time smaller than previously
+// need depth-1 so that it doesnt keep stacking to infinity. 
 function fractal(pic, n) {
     return n === 0
     ? blank
