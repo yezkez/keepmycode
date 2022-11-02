@@ -49,8 +49,8 @@ function oxoguanine_repair(xs) {
     return is_null(xs) 
             ? null
             : is_nucleobase(head(xs))
-            ? repair(is_nucleobase, tail(xs))
-            : head(xs) = "G";
+            ? oxoguanine_repair(tail(xs))
+            : head(xs) = "G"; //how to change 8 to G??
 }
 
 
