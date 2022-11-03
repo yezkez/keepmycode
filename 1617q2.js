@@ -91,19 +91,23 @@ function check_winning_group(bet_nums, draw_nums, extra_num) {
                 return helper(x, tail(xs), n);
             }
         }
+        if (is_null(numsB)) {
+            return 0;
+        } else {
         return helper(head(numsB), numsA, 0) + num_of_matches(numsA, tail(numsB));
     }
+}
 
     if (num_of_matches === length(bet_nums)) {
         return 1;
     } else if (num_of_matches === length(bet_nums) - 1) {
-        return member(extra_num, bet_nums)
-                ? 2
-                : 3;
+        return is_null(member(extra_num, bet_nums))
+                ? 3
+                : 2;
     } else if (num_of_matches === length(bet_nums) - 2) {
-        return member(extra_num, bet_nums)
-                ? 4
-                : 5;
+        return is_null(member(extra_num, bet_nums))
+                ? 5
+                : 4;
     } else {
         return 0;
     }
