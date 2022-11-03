@@ -66,7 +66,11 @@ function num_of_matches(numsA, numsB) {
             return helper(x, tail(xs), n);
         }
     }
+    if (is_null(numsB)) {
+        return 0;
+    } else {
     return helper(head(numsB), numsA, 0) + num_of_matches(numsA, tail(numsB));
+}
 }
 
 
