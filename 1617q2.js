@@ -12,16 +12,22 @@
 ////////////////////////////////////////////////////////////
 
 function all_different(nums) {
+    
     function helper(x, xs) {
         if (is_null(xs)) {
-            return 
+            return true;
         } else if (x === head(xs)) {
             return false;
         } else {
             return helper(x, tail(xs));
         }
-    } 
+    }
+    
+    if (is_null(nums)) {
+        return true;
+    } else {
     return helper(head(nums), tail(nums)) && all_different(tail(nums));
+    }
 }
 
 
@@ -124,59 +130,59 @@ function assert(f, test_name, fnames) {
 // Test Cases for Q2A
 ////////////////////////////////////////////////////////////
 
-// assert(
-//     () => {
-//         const nums = list(23);
-//         return equal(all_different(nums), true);
-//     },
-//     "Q2A-T1",
-//     ['all_different']
-// );
+assert(
+    () => {
+        const nums = list(23);
+        return equal(all_different(nums), true);
+    },
+    "Q2A-T1",
+    ['all_different']
+);
 
-// assert(
-//     () => {
-//         const nums = list(2, 5, 1, 6, 7, 4, 3);
-//         return equal(all_different(nums), true);
-//     },
-//     "Q2A-T2",
-//     ['all_different']
-// );
+assert(
+    () => {
+        const nums = list(2, 5, 1, 6, 7, 4, 3);
+        return equal(all_different(nums), true);
+    },
+    "Q2A-T2",
+    ['all_different']
+);
 
-// assert(
-//     () => {
-//         const nums = list(2, 6, 1, 7, 6, 4, 3);
-//         return equal(all_different(nums), false);
-//     },
-//     "Q2A-T3",
-//     ['all_different']
-// );
+assert(
+    () => {
+        const nums = list(2, 6, 1, 7, 6, 4, 3);
+        return equal(all_different(nums), false);
+    },
+    "Q2A-T3",
+    ['all_different']
+);
 
-// assert(
-//     () => {
-//         const nums = list(3, 2);
-//         return equal(all_different(nums), true);
-//     },
-//     "Q2A-T4",
-//     ['all_different']
-// );
+assert(
+    () => {
+        const nums = list(3, 2);
+        return equal(all_different(nums), true);
+    },
+    "Q2A-T4",
+    ['all_different']
+);
 
-// assert(
-//     () => {
-//         const nums = list(3, 2, 1, 9, 8);
-//         return equal(all_different(nums), true);
-//     },
-//     "Q2A-T5",
-//     ['all_different']
-// );
+assert(
+    () => {
+        const nums = list(3, 2, 1, 9, 8);
+        return equal(all_different(nums), true);
+    },
+    "Q2A-T5",
+    ['all_different']
+);
 
-// assert(
-//     () => {
-//         const nums = list(2, 6, 3, 7, 6, 6, 3, 1);
-//         return equal(all_different(nums), false);
-//     },
-//     "Q2A-T6",
-//     ['all_different']
-// );
+assert(
+    () => {
+        const nums = list(2, 6, 3, 7, 6, 6, 3, 1);
+        return equal(all_different(nums), false);
+    },
+    "Q2A-T6",
+    ['all_different']
+);
 
 
 
