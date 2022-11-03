@@ -7,13 +7,19 @@
 
 
 ////////////////////////////////////////////////////////////
-// Question 2A
+// Question 2A 
+// ||
 ////////////////////////////////////////////////////////////
 
 function all_different(nums) {
-
-    // WRITE HERE.
-
+    function helper(x, xs) {
+        if (x === head(xs) {
+            return false;
+        } else {
+            return helper(x, tail(xs));
+        }
+    } 
+    return helper(head(nums), tail(nums)) && all_different(tail(nums));
 }
 
 
@@ -22,9 +28,18 @@ function all_different(nums) {
 ////////////////////////////////////////////////////////////
 
 function is_valid_toto_set(nums, n, min, max) {
-
-    // WRITE HERE.
-
+    function smallest(nums) {
+        return accumulate((x, y) =>? x < y ? x : y,
+                            head(nums), tail(nums));
+    }
+    function largest(nums) {
+        return accumulate((x, y) =>? x > y ? x : y,
+                            head(nums), tail(nums));
+    }
+    return (smallest(nums) >= min) && 
+            (largest(nums) <= max) &&
+            (all_different(nums)) &&
+            length(nums) === n;
 }
 
 
@@ -34,9 +49,16 @@ function is_valid_toto_set(nums, n, min, max) {
 ////////////////////////////////////////////////////////////
 
 function num_of_matches(numsA, numsB) {
-
-    // WRITE HERE.
-
+    helper(x, xs, n) {
+        if (is_null(xs)) {
+            return n;
+        } else if (x === head(xs)) {
+            return helper(x, tail(xs), n + 1);
+        } else {
+            return helper(x, tail(xs), n);
+        }
+    }
+    return helper(head(numsB), numsA, 0) + num_of_matches(numsA, tail(numsB));
 }
 
 
@@ -46,8 +68,33 @@ function num_of_matches(numsA, numsB) {
 ////////////////////////////////////////////////////////////
 
 function check_winning_group(bet_nums, draw_nums, extra_num) {
+    
+    function num_of_matches(numsA, numsB) {
+        helper(x, xs, n) {
+            if (is_null(xs)) {
+                return n;
+            } else if (x === head(xs)) {
+                return helper(x, tail(xs), n + 1);
+            } else {
+                return helper(x, tail(xs), n);
+            }
+        }
+        return helper(head(numsB), numsA, 0) + num_of_matches(numsA, tail(numsB));
+    }
 
-    // WRITE HERE.
+    if (num_of_matches === length(bet_nums)) {
+        return 1;
+    } else if (num_of_matches === length(bet_nums) - 1) {
+        return member(extra_num, bet_nums)
+                ? 2
+                : 3;
+    } else if (num_of_matches === length(bet_nums) - 2) {
+        return member(extra_num, bet_nums)
+                ? 4
+                : 5;
+    } else {
+        return 0;
+    }
 
 }
 
